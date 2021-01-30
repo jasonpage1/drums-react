@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { makeSound } from "./utils/get-sound";
 
 function App() {
+  const drumsToMap = ["w", "a", "s", "d", "j", "k", "l"];
+  const renderdum = () => {
+    return drumsToMap.map((drum) => {
+      return <button onClick={() => makeSound(drum)} key={drum} className={`drum ${drum}`}></button>;
+    });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Drums</h1>
+      <div className="set">{renderdum()}</div>
+      
     </div>
   );
 }
